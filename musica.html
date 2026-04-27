@@ -6,7 +6,9 @@
 <title>🎵💖 De mi Cristian 🎵💖</title>
 
 <style>
-*{box-sizing:border-box;}
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
@@ -53,6 +55,68 @@ body::after{
     to{transform:translateY(-120vh);}
 }
 
+/* VIDEOS LATERALES */
+.lado-video{
+    position:fixed;
+    top:50%;
+    transform:translateY(-50%);
+    width:120px;
+    height:200px;
+    object-fit:cover;
+    border-radius:22px;
+    box-shadow:0 0 25px #ff69b4, 0 0 50px rgba(255,105,180,0.7);
+    z-index:5;
+    opacity:.9;
+    background:black;
+}
+
+#video-izq{
+    left:4%;
+}
+
+#video-der{
+    right:4%;
+}
+
+/* INTRO */
+#intro-musica{
+    margin:15px auto;
+    padding:18px;
+    width:90%;
+    max-width:650px;
+    border-radius:24px;
+    background:rgba(255,255,255,0.12);
+    box-shadow:0 0 25px #ff69b4, inset 0 0 20px rgba(255,255,255,.12);
+    backdrop-filter:blur(12px);
+    animation:aparecer 1s ease, latidoSuave 1.8s infinite;
+    position:relative;
+    z-index:20;
+}
+
+#intro-musica p{
+    margin:0;
+    font-size:1.45em;
+    color:#ffc1e3;
+    text-shadow:0 0 12px #ff1493;
+}
+
+#intro-musica span{
+    display:block;
+    margin-top:8px;
+    font-size:1em;
+    opacity:.9;
+}
+
+@keyframes aparecer{
+    from{opacity:0; transform:translateY(25px) scale(.9);}
+    to{opacity:1; transform:translateY(0) scale(1);}
+}
+
+@keyframes latidoSuave{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.02);}
+}
+
 .contenedor{
     width:100%;
     height:100vh;
@@ -75,35 +139,15 @@ h1{
     margin:0 0 12px;
     font-size:1.25em;
     color:#ffd6ec;
-    text-shadow:0 0 10px #ff69b4,0 0 20px #ff1493;
+    text-shadow:0 0 10px #ff69b4, 0 0 20px #ff1493;
+    font-weight:600;
 }
 
-/* VIDEOS */
-.lado-video{
-    position:fixed;
-    top:50%;
-    transform:translateY(-50%);
-    width:120px;
-    height:200px;
-    object-fit:cover;
-    border-radius:22px;
-    box-shadow:0 0 25px #ff69b4,0 0 50px rgba(255,105,180,0.7);
-    z-index:5;
-    opacity:.9;
-    background:black;
-}
-
-#video-izq{left:4%;}
-#video-der{right:4%;}
-
-/* AUDIO */
 audio{
     width:95%;
     max-width:650px;
     margin-bottom:14px;
     filter:drop-shadow(0 0 12px #ff69b4);
-    position:relative;
-    z-index:40;
 }
 
 /* KARAOKE */
@@ -145,7 +189,7 @@ audio{
     transform:scale(1.05);
 }
 
-/* BOTÓN */
+/* BOTÓN VOLVER */
 .boton-volver{
     position:fixed;
     bottom:18px;
@@ -183,84 +227,79 @@ audio{
 
 /* CELULAR */
 @media(max-width:768px){
-
-    h1{
-        font-size:1.45em;
-        margin-top:8px;
-    }
-
-    .subtitulo{
-        font-size:.95em;
-        margin-bottom:12px;
-    }
-
-    audio{
-        width:90%;
-        margin-bottom:150px;
-    }
-
     .lado-video{
-        position:absolute;
-        top:210px;
-        transform:none;
-        width:82px;
-        height:120px;
-        border-radius:18px;
-        opacity:.95;
-        z-index:30;
+        width:75px;
+        height:125px;
+        border-radius:16px;
+        opacity:.85;
+        z-index:4;
     }
 
     #video-izq{
-        left:13%;
+        left:2%;
     }
 
     #video-der{
-        right:13%;
+        right:2%;
+    }
+
+    #intro-musica{
+        width:88%;
+        padding:14px;
+        margin-top:12px;
+    }
+
+    #intro-musica p{
+        font-size:1.15em;
+    }
+
+    #intro-musica span{
+        font-size:.9em;
+    }
+
+    h1{
+        font-size:1.55em;
+        margin-top:4px;
+    }
+
+    .subtitulo{
+        font-size:1em;
+        margin-bottom:10px;
+    }
+
+    audio{
+        width:92%;
     }
 
     .karaoke{
-        width:88%;
-        height:38vh;
+        width:82%;
+        height:56vh;
         padding:15px;
     }
 
     .linea{
-        font-size:.88em;
+        font-size:.98em;
     }
 
     .linea.activa{
-        font-size:1.08em;
+        font-size:1.18em;
     }
 
     .boton-volver{
-        bottom:22px;
         font-size:.85em;
         padding:11px 18px;
     }
 }
 
 @media(max-width:480px){
-
     .lado-video{
-        top:220px;
-        width:75px;
-        height:110px;
-    }
-
-    #video-izq{
-        left:12%;
-    }
-
-    #video-der{
-        right:12%;
-    }
-
-    audio{
-        margin-bottom:145px;
+        width:62px;
+        height:105px;
     }
 
     .karaoke{
-        height:37vh;
+        width:78%;
+        height:54vh;
     }
 
     h1{
@@ -272,15 +311,14 @@ audio{
     }
 
     .linea{
-        font-size:.85em;
+        font-size:.9em;
     }
 
     .linea.activa{
-        font-size:1.03em;
+        font-size:1.08em;
     }
 }
 
-/* PC GRANDE */
 @media(min-width:1200px){
     .lado-video{
         width:145px;
@@ -314,8 +352,12 @@ alt="animación izquierda">
     <source src="https://dl.dropboxusercontent.com/scl/fi/alha21huq48mlsyr3hufv/video2.mp4?rlkey=tfdi95bg74kxz6pqpc08akn1s&st=uj8f497s" type="video/mp4">
 </video>
 
-<div class="contenedor">
+<div id="intro-musica">
+    <p>Escúchala, te la dedico :3 💖</p>
+    <span>🎧✨</span>
+</div>
 
+<div class="contenedor">
     <h1>🎵💖 De mi Cristian 🎵💖</h1>
     <h2 class="subtitulo">💖 Para ti Lucy :3 💖</h2>
 
@@ -324,7 +366,6 @@ alt="animación izquierda">
     </audio>
 
     <div class="karaoke" id="karaoke"></div>
-
 </div>
 
 <a href="index.html" class="boton-volver">🌌 Volver a la galaxia 💖</a>
@@ -407,6 +448,7 @@ const letra = [
 
 const karaoke = document.getElementById("karaoke");
 const audio = document.getElementById("audio");
+const intro = document.getElementById("intro-musica");
 
 letra.forEach((l,i)=>{
     const p = document.createElement("p");
@@ -414,6 +456,17 @@ letra.forEach((l,i)=>{
     p.textContent = l.texto;
     p.id = "linea-" + i;
     karaoke.appendChild(p);
+});
+
+audio.addEventListener("play",()=>{
+    if(intro){
+        intro.style.transition="opacity .7s ease, transform .7s ease";
+        intro.style.opacity="0";
+        intro.style.transform="scale(.9)";
+        setTimeout(()=>{
+            intro.style.display="none";
+        },700);
+    }
 });
 
 audio.addEventListener("timeupdate",()=>{
@@ -438,7 +491,6 @@ audio.addEventListener("timeupdate",()=>{
     }
 });
 
-/* CORAZONES AL TOCAR */
 document.addEventListener("click",(e)=>{
     const corazon = document.createElement("div");
     corazon.className = "corazon";
