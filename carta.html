@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carta para Lucy 💌</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:radial-gradient(circle at top,#ff9bd5,#3b0030,#090009);
+    font-family:'Segoe UI',sans-serif;
+}
+
+/* CONTENEDOR */
+.escena{
+    position:relative;
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* SOBRE */
+.sobre-wrap{
+    position:relative;
+    width:300px;
+    height:200px;
+    cursor:pointer;
+    perspective:1000px;
+    z-index:20;
+}
+
+.sobre-base{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(145deg,#ff5ca8,#ff9bd5);
+    border-radius:14px;
+    box-shadow:0 0 35px #ff69b4;
+}
+
+.tapa{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:115px;
+    background:linear-gradient(145deg,#ff9bd5,#ff5ca8);
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    transform-origin:top;
+    transition:transform 1s ease;
+}
+
+.sello{
+    position:absolute;
+    top:82px;
+    left:50%;
+    transform:translateX(-50%);
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:#fff0f8;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    box-shadow:0 0 15px #ff1493;
+}
+
+.texto-abrir{
+    position:absolute;
+    top:225px;
+    width:100%;
+    text-align:center;
+    color:white;
+}
+
+/* CARTA */
+.carta{
+    position:absolute;
+    width:90%;
+    max-width:460px;
+    max-height:80vh;
+    overflow-y:auto;
+    background:#fff0f8;
+    color:#4a0030;
+    padding:22px;
+    border-radius:22px;
+    box-shadow:0 0 35px #ff69b4;
+    text-align:center;
+    opacity:0;
+    transform:translateY(80px) scale(.8);
+    transition:1s ease;
+    pointer-events:none;
+}
+
+/* FOTO ELEGANTE (SIN EXAGERAR) */
+.foto-pro{
+    width:100%;
+    max-width:230px;
+    border-radius:18px;
+    margin:15px auto;
+    display:block;
+
+    filter:contrast(1.1) brightness(1.05);
+    box-shadow:0 0 15px rgba(255,105,180,0.3);
+
+    transition:0.5s;
+}
+
+.foto-pro:hover{
+    transform:scale(1.03);
+}
+
+/* TEXTO */
+h1{
+    color:#ff1493;
+}
+
+p{
+    line-height:1.6;
+}
+
+.firma{
+    margin-top:10px;
+    color:#ff1493;
+}
+
+/* BOTÓN */
+.boton-volver{
+    position:fixed;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#ff4f9a;
+    padding:10px 15px;
+    border-radius:20px;
+    color:white;
+    text-decoration:none;
+}
+
+/* ANIMACIÓN */
+.abierto .tapa{
+    transform:rotateX(180deg);
+}
+
+.abierto .sobre-wrap{
+    opacity:0;
+    transform:scale(0.8);
+}
+
+.abierto .carta{
+    opacity:1;
+    transform:translateY(0) scale(1);
+    pointer-events:auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="escena" id="escena">
+
+    <div class="sobre-wrap" id="sobre">
+        <div class="tapa"></div>
+        <div class="sobre-base"></div>
+        <div class="sello">💖</div>
+        <div class="texto-abrir">Toca para abrir 💌</div>
+    </div>
+
+    <div class="carta">
+        <h1>Para ti Lucy :3 💖</h1>
+
+        <!-- FOTO DESDE DROPBOX -->
+        <img src="https://www.dropbox.com/scl/fi/0irf3xsxcfhw8gc5r00o7/Fotofinal.png?rlkey=jrvm2h65rlojduqv8adllz3ic&st=3nldvwub&raw=1" class="foto-pro">
+
+        <p>
+            Bueno… no soy muy bueno sacándome fotos 😅  
+            pero igual quise intentar porque eres tú 💖
+        </p>
+
+        <p>
+            No sé si salió perfecta, pero es real…  
+            y creo que eso es lo que importa
+        </p>
+
+        <p>
+            Me alegra mucho haberte conocido  
+            contigo todo se siente más bonito ✨
+        </p>
+
+        <p>
+            Feliz cumpleaños Lucy 💖  
+            de verdad espero que este día te haga sonreír mucho
+        </p>
+
+        <p>
+            Te mando abrazos y besitos…  
+            mua mua :3 💕
+        </p>
+
+        <div class="firma">
+            De Cristian 💖
+        </div>
+    </div>
+
+</div>
+
+<a href="index.html" class="boton-volver">🌌 Volver</a>
+
+<script>
+const escena = document.getElementById("escena");
+const sobre = document.getElementById("sobre");
+
+sobre.addEventListener("click",()=>{
+    escena.classList.add("abierto");
+});
+</script>
+
+</body>
+</html>

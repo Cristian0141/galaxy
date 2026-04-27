@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎵💖 De mi Cristian 🎵💖</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:radial-gradient(circle at top,#ff7abf,#270021,#000);
+    color:white;
+    font-family:'Segoe UI',sans-serif;
+    text-align:center;
+    overflow:hidden;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,105,180,.35), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.15), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(255,20,147,.25), transparent 35%);
+    animation:fondoMover 8s infinite alternate ease-in-out;
+    z-index:-2;
+}
+
+body::after{
+    content:"💖 💕 ✨ 💗 🌸 💘";
+    position:fixed;
+    top:-10%;
+    left:0;
+    width:100%;
+    height:120%;
+    font-size:28px;
+    opacity:.18;
+    animation:flotar 14s linear infinite;
+    z-index:-1;
+}
+
+@keyframes fondoMover{
+    from{filter:hue-rotate(0deg) blur(0px);}
+    to{filter:hue-rotate(20deg) blur(2px);}
+}
+
+@keyframes flotar{
+    from{transform:translateY(100vh);}
+    to{transform:translateY(-120vh);}
+}
+
+/* VIDEOS LATERALES */
+.lado-video{
+    position:fixed;
+    top:50%;
+    transform:translateY(-50%);
+    width:120px;
+    height:200px;
+    object-fit:cover;
+    border-radius:22px;
+    box-shadow:0 0 25px #ff69b4, 0 0 50px rgba(255,105,180,0.7);
+    z-index:5;
+    opacity:.9;
+    background:black;
+}
+
+#video-izq{
+    left:4%;
+}
+
+#video-der{
+    right:4%;
+}
+
+/* INTRO */
+#intro-musica{
+    margin:15px auto;
+    padding:18px;
+    width:90%;
+    max-width:650px;
+    border-radius:24px;
+    background:rgba(255,255,255,0.12);
+    box-shadow:0 0 25px #ff69b4, inset 0 0 20px rgba(255,255,255,.12);
+    backdrop-filter:blur(12px);
+    animation:aparecer 1s ease, latidoSuave 1.8s infinite;
+    position:relative;
+    z-index:20;
+}
+
+#intro-musica p{
+    margin:0;
+    font-size:1.45em;
+    color:#ffc1e3;
+    text-shadow:0 0 12px #ff1493;
+}
+
+#intro-musica span{
+    display:block;
+    margin-top:8px;
+    font-size:1em;
+    opacity:.9;
+}
+
+@keyframes aparecer{
+    from{opacity:0; transform:translateY(25px) scale(.9);}
+    to{opacity:1; transform:translateY(0) scale(1);}
+}
+
+@keyframes latidoSuave{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.02);}
+}
+
+.contenedor{
+    width:100%;
+    height:100vh;
+    padding:10px 14px 95px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    position:relative;
+    z-index:10;
+}
+
+h1{
+    margin:5px 0 2px;
+    color:#ffc1e3;
+    text-shadow:0 0 15px #ff1493,0 0 30px #ff69b4;
+    font-size:2em;
+}
+
+.subtitulo{
+    margin:0 0 12px;
+    font-size:1.25em;
+    color:#ffd6ec;
+    text-shadow:0 0 10px #ff69b4, 0 0 20px #ff1493;
+    font-weight:600;
+}
+
+audio{
+    width:95%;
+    max-width:650px;
+    margin-bottom:14px;
+    filter:drop-shadow(0 0 12px #ff69b4);
+}
+
+/* KARAOKE */
+.karaoke{
+    width:95%;
+    max-width:650px;
+    height:58vh;
+    overflow-y:auto;
+    padding:20px;
+    border-radius:26px;
+    background:rgba(255,255,255,0.10);
+    box-shadow:0 0 28px #ff69b4, inset 0 0 25px rgba(255,255,255,.08);
+    backdrop-filter:blur(12px);
+    scroll-behavior:smooth;
+}
+
+.karaoke::-webkit-scrollbar{
+    width:5px;
+}
+
+.karaoke::-webkit-scrollbar-thumb{
+    background:#ff69b4;
+    border-radius:20px;
+}
+
+.linea{
+    opacity:.23;
+    font-size:1.12em;
+    line-height:1.5;
+    margin:12px 0;
+    transition:.35s ease;
+}
+
+.linea.activa{
+    opacity:1;
+    color:#fff;
+    font-size:1.38em;
+    text-shadow:0 0 10px #ff69b4,0 0 22px white,0 0 35px #ff1493;
+    transform:scale(1.05);
+}
+
+/* BOTÓN VOLVER */
+.boton-volver{
+    position:fixed;
+    bottom:18px;
+    left:50%;
+    transform:translateX(-50%);
+    padding:13px 23px;
+    border-radius:35px;
+    background:linear-gradient(45deg,#ff4f9a,#ff9bd5,#ffc1e3);
+    color:white;
+    text-decoration:none;
+    box-shadow:0 0 20px #ff69b4,0 0 35px #ff1493;
+    z-index:999;
+    font-size:.95em;
+}
+
+/* CORAZONES */
+.corazon{
+    position:fixed;
+    pointer-events:none;
+    font-size:24px;
+    animation:subir 1.2s ease forwards;
+    z-index:9999;
+}
+
+@keyframes subir{
+    from{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+    to{
+        opacity:0;
+        transform:translateY(-90px) scale(1.8);
+    }
+}
+
+/* CELULAR */
+@media(max-width:768px){
+    .lado-video{
+        width:75px;
+        height:125px;
+        border-radius:16px;
+        opacity:.85;
+        z-index:4;
+    }
+
+    #video-izq{
+        left:2%;
+    }
+
+    #video-der{
+        right:2%;
+    }
+
+    #intro-musica{
+        width:88%;
+        padding:14px;
+        margin-top:12px;
+    }
+
+    #intro-musica p{
+        font-size:1.15em;
+    }
+
+    #intro-musica span{
+        font-size:.9em;
+    }
+
+    h1{
+        font-size:1.55em;
+        margin-top:4px;
+    }
+
+    .subtitulo{
+        font-size:1em;
+        margin-bottom:10px;
+    }
+
+    audio{
+        width:92%;
+    }
+
+    .karaoke{
+        width:82%;
+        height:56vh;
+        padding:15px;
+    }
+
+    .linea{
+        font-size:.98em;
+    }
+
+    .linea.activa{
+        font-size:1.18em;
+    }
+
+    .boton-volver{
+        font-size:.85em;
+        padding:11px 18px;
+    }
+}
+
+@media(max-width:480px){
+    .lado-video{
+        width:62px;
+        height:105px;
+    }
+
+    .karaoke{
+        width:78%;
+        height:54vh;
+    }
+
+    h1{
+        font-size:1.35em;
+    }
+
+    .subtitulo{
+        font-size:.9em;
+    }
+
+    .linea{
+        font-size:.9em;
+    }
+
+    .linea.activa{
+        font-size:1.08em;
+    }
+}
+
+@media(min-width:1200px){
+    .lado-video{
+        width:145px;
+        height:240px;
+    }
+
+    #video-izq{
+        left:7%;
+    }
+
+    #video-der{
+        right:7%;
+    }
+
+    .karaoke{
+        height:60vh;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<img 
+src="https://dl.dropboxusercontent.com/scl/fi/traqxpsas86q1w2glqs3k/video1.webp?rlkey=j0ucgojwm6alaqmvhizyqtb0h&st=u6i3d77s"
+class="lado-video"
+id="video-izq"
+alt="animación izquierda">
+
+<video autoplay loop muted playsinline class="lado-video" id="video-der">
+    <source src="https://dl.dropboxusercontent.com/scl/fi/alha21huq48mlsyr3hufv/video2.mp4?rlkey=tfdi95bg74kxz6pqpc08akn1s&st=uj8f497s" type="video/mp4">
+</video>
+
+<div id="intro-musica">
+    <p>Escúchala, te la dedico :3 💖</p>
+    <span>🎧✨</span>
+</div>
+
+<div class="contenedor">
+    <h1>🎵💖 De mi Cristian 🎵💖</h1>
+    <h2 class="subtitulo">💖 Para ti Lucy :3 💖</h2>
+
+    <audio id="audio" controls>
+        <source src="https://dl.dropboxusercontent.com/scl/fi/h07pjfnxdfc9mm6zosjzd/musica1.mp3?rlkey=rfbtmmx4w5lydemu3kyii7vac&st=dr4621zy" type="audio/mpeg">
+    </audio>
+
+    <div class="karaoke" id="karaoke"></div>
+</div>
+
+<a href="index.html" class="boton-volver">🌌 Volver a la galaxia 💖</a>
+
+<script>
+const letra = [
+{t:15,texto:"Y si te parece que"},
+{t:17,texto:"Yo estoy enamorado tuyo"},
+{t:20,texto:"Eso es un invento, intuyo"},
+{t:22,texto:"No des crédito a murmullos"},
+
+{t:24,texto:"Porque casi nunca llamo"},
+{t:27,texto:"Para decir que te amo"},
+{t:30,texto:"Y más de una vez lo hice"},
+{t:32,texto:"A un número equivocado"},
+
+{t:35,texto:"Casi nunca nadie dice"},
+{t:37,texto:"Que yo estoy enamorado tuyo"},
+
+{t:45,texto:"Raramente desespero"},
+{t:47,texto:"Por tenerte aquí a mi lado"},
+{t:50,texto:"Y eso no significa"},
+{t:52,texto:"Que tenga un significado"},
+
+{t:55,texto:"Si pensás que amor yo siento"},
+{t:57,texto:"Por favor no hagás pamento"},
+{t:60,texto:"No comentes con tu gente"},
+{t:62,texto:"Sobre nuestro asunto"},
+
+{t:65,texto:"Casi nunca nadie dice"},
+{t:67,texto:"Que yo estoy enamorado tuyo"},
+
+{t:75,texto:"No te vistas, no te hagás la nunca vista"},
+{t:80,texto:"Tengo en vista a cantarte un"},
+{t:83,texto:"Hasta la vista"},
+{t:85,texto:"No te vistas, no te hagás la nunca vista"},
+{t:90,texto:"Tengo lista una canción que dice"},
+{t:93,texto:"Hasta la vista, señorita"},
+
+{t:107,texto:"Casi nunca veo la foto"},
+{t:110,texto:"Tuya en mi celular"},
+{t:112,texto:"Sigue ahí por la pereza"},
+{t:115,texto:"Que me da apretar borrar"},
+
+{t:118,texto:"No estoy tan obsesionado"},
+{t:120,texto:"Vale como aclaración"},
+{t:122,texto:"Si pensás que es por eso"},
+{t:125,texto:"Que yo canto esta canción"},
+
+{t:127,texto:"Casi nunca nadie dice"},
+{t:130,texto:"Que yo estoy enamorado tuyo"},
+
+{t:137,texto:"No te vistas, no te hagás la nunca vista"},
+{t:142,texto:"Tengo en vista a cantarte un"},
+{t:145,texto:"Hasta la vista"},
+{t:147,texto:"No te vistas, no te hagás la nunca vista"},
+{t:152,texto:"Tengo lista una canción que dice"},
+{t:155,texto:"Hasta la vista, señorita"},
+
+{t:160,texto:"Y si te parece que"},
+{t:162,texto:"Yo estoy enamorado tuyo"},
+{t:165,texto:"Eso es un invento, intuyo"},
+{t:167,texto:"No des crédito a murmullos"},
+
+{t:170,texto:"Porque casi nunca llamo"},
+{t:172,texto:"Para decir que te amo"},
+{t:175,texto:"Y más de una vez lo hice"},
+{t:177,texto:"A un número equivocado"},
+
+{t:180,texto:"Casi nunca nadie dice"},
+{t:182,texto:"Que yo estoy enamorado tuyo"},
+
+{t:190,texto:"No te vistas, no te hagás la nunca vista"},
+{t:194,texto:"Tengo en vista a cantarte un"},
+{t:197,texto:"Hasta la vista"},
+{t:200,texto:"No te vistas, no te hagás la nunca vista"},
+{t:204,texto:"Tengo lista una canción que dice"},
+{t:207,texto:"Hasta la vista, señorita 💖"}
+];
+
+const karaoke = document.getElementById("karaoke");
+const audio = document.getElementById("audio");
+const intro = document.getElementById("intro-musica");
+
+letra.forEach((l,i)=>{
+    const p = document.createElement("p");
+    p.className = "linea";
+    p.textContent = l.texto;
+    p.id = "linea-" + i;
+    karaoke.appendChild(p);
+});
+
+audio.addEventListener("play",()=>{
+    if(intro){
+        intro.style.transition="opacity .7s ease, transform .7s ease";
+        intro.style.opacity="0";
+        intro.style.transform="scale(.9)";
+        setTimeout(()=>{
+            intro.style.display="none";
+        },700);
+    }
+});
+
+audio.addEventListener("timeupdate",()=>{
+    let actual = 0;
+
+    for(let i=0;i<letra.length;i++){
+        if(audio.currentTime >= letra[i].t){
+            actual = i;
+        }
+    }
+
+    document.querySelectorAll(".linea").forEach(l=>l.classList.remove("activa"));
+
+    const activa = document.getElementById("linea-" + actual);
+
+    if(activa){
+        activa.classList.add("activa");
+        activa.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+    }
+});
+
+document.addEventListener("click",(e)=>{
+    const corazon = document.createElement("div");
+    corazon.className = "corazon";
+    corazon.textContent = ["💖","💕","💗","💘","✨"][Math.floor(Math.random()*5)];
+    corazon.style.left = e.clientX + "px";
+    corazon.style.top = e.clientY + "px";
+    document.body.appendChild(corazon);
+
+    setTimeout(()=>{
+        corazon.remove();
+    },1200);
+});
+</script>
+
+</body>
+</html>
